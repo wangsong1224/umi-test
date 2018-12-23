@@ -39,7 +39,10 @@ export default {
       component: './CardTest.jsx'
     }, {
       path: 'cards',
-      component: './Puzzlecards.jsx'
+      component: './Puzzlecards1.jsx'
+    }, {
+      path: 'puzzlecards',
+      component: './puzzlecards.jsx'
     }]
 
   }, {

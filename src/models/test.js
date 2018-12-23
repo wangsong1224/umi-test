@@ -1,6 +1,6 @@
 // https://dvajs.com/guide/concepts.html
 // https://dvajs.com/guide/fig-show.html
-app.model({
+export default {
   // model 的命名空间,只能用字符串,一个大型应用可能包含多个 model, 通过 namespace 区分
   namespace: 'todoList',
   // 当前 model 状态的初始值,表示当前状态
@@ -41,4 +41,4 @@ app.model({
    * 通过 type 属性可以匹配到某个具体的 reducer 或者 effects,payload 属性是数据体,用于
    * 传给 reducer 或 effects
    */
-})
+}

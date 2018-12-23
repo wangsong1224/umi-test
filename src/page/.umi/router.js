@@ -23,11 +23,16 @@ let routes = [
       },
       {
         "path": "/cards",
-        "component": require('../Puzzlecards.jsx').default,
+        "component": require('../Puzzlecards1.jsx').default,
         "exact": true
       },
       {
-        "component": () => React.createElement(require('/Users/oumatsu/Desktop/my-projects/umi-test/node_modules/_umi-build-dev@1.2.7@umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/page', hasRoutesInConfig: true })
+        "path": "/puzzlecards",
+        "component": require('../puzzlecards.jsx').default,
+        "exact": true
+      },
+      {
+        "component": () => React.createElement(require('C:/Users/王松/Desktop/项目/umi-test/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/page', hasRoutesInConfig: true })
       }
     ]
   },
@@ -37,7 +42,7 @@ let routes = [
     "exact": true
   },
   {
-    "component": () => React.createElement(require('/Users/oumatsu/Desktop/my-projects/umi-test/node_modules/_umi-build-dev@1.2.7@umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/page', hasRoutesInConfig: true })
+    "component": () => React.createElement(require('C:/Users/王松/Desktop/项目/umi-test/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/page', hasRoutesInConfig: true })
   }
 ];
 window.g_plugins.applyForEach('patchRoutes', { initialValue: routes });

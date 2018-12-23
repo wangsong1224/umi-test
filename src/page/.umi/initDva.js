@@ -14,4 +14,5 @@ app.use(createLoading());
   app.use(plugin);
 });
 
-
+app.model({ namespace: 'puzzlecards', ...(require('C:/Users/王松/Desktop/项目/umi-test/src/models/puzzlecards.js').default) });
+app.model({ namespace: 'test', ...(require('C:/Users/王松/Desktop/项目/umi-test/src/models/test.js').default) });
