@@ -24,12 +24,9 @@ import React, { Component } from "react";
 import { Card, Button } from "antd";
 import { connect } from "dva";
 
-const namespace = "puzzlecards";
-
 const mapStateToProps = state => {
-  const cardList = state[namespace];
   return {
-    cardList
+    state: state["puzzlecards"]
   };
 };
 
@@ -59,7 +56,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onClickAdd: newCard => {
       const action = {
-        type: `${namespace}/addNewCard`,
+        type: `puzzlecards/addNewCard`,
         payload: newCard
       };
       dispatch(action);
@@ -75,7 +72,7 @@ export default class PuzzleCards extends Component {
   render() {
     return (
       <div>
-        {this.props.cardList.data.map(card => {
+        {this.props.state.data.map(card => {
           return (
             <Card key={card.id}>
               <div>Q: {card.setup}</div>
