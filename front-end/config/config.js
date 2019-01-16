@@ -13,15 +13,18 @@
  */
 export default {
   plugins: [
-    ['umi-plugin-react', {
-      // 插件的配置选项
-      // 引入组件库 antd,并实现按需编译 (TODO 这个很厉害啊)
-      antd: true,
-      // model 是前端分层中承上启下,负责管理数据(状态) 业界主流的状态管理类库有 redux,mobx
-      // 本项目中 DVA 框架承担这个角色
-      /** */
-      dva: true
-    }]
+    [
+      "umi-plugin-react",
+      {
+        // 插件的配置选项
+        // 引入组件库 antd,并实现按需编译 (TODO 这个很厉害啊)
+        antd: true,
+        // model 是前端分层中承上启下,负责管理数据(状态) 业界主流的状态管理类库有 redux,mobx
+        // 本项目中 DVA 框架承担这个角色
+        /** */
+        dva: true
+      }
+    ]
   ],
   /**
    * 在 umi 中,默认使用的是约定式的路由,在 page 下面的 js 文件都会按照文件名映射到一个路由,
@@ -29,24 +32,29 @@ export default {
    * 在本文件中增加 routes 的配置,即可使用配置式路由
    */
   routes: [{
-    path: '/',
-    component: '../layout',
-    routes: [{
-      path: 'helloworld',
-      component: './HelloWorld.jsx'
-    }, {
-      path: 'card',
-      component: './CardTest.jsx'
-    }, {
-      path: 'cards',
-      component: './Puzzlecards1.jsx'
-    }, {
-      path: 'puzzlecards',
-      component: './puzzlecards.jsx'
-    }]
-
-  }, {
-    path: '/card',
-    component: './CardTest.jsx'
-  }]
-}
+      path: "/",
+      component: "../layout",
+      routes: [{
+          path: "helloworld",
+          component: "./HelloWorld.jsx"
+        },
+        {
+          path: "card",
+          component: "./CardTest.jsx"
+        },
+        {
+          path: "cards",
+          component: "./Puzzlecards1.jsx"
+        },
+        {
+          path: "puzzlecards",
+          component: "./puzzlecards.jsx"
+        }
+      ]
+    },
+    {
+      path: "/card",
+      component: "./CardTest.jsx"
+    }
+  ]
+};
