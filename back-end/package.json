@@ -5,7 +5,9 @@
   "private": true,
   "dependencies": {
     "egg": "^2.2.1",
-    "egg-scripts": "^2.5.0"
+    "egg-mysql": "^3.0.0",
+    "egg-scripts": "^2.5.0",
+    "egg-validate": "^2.0.2"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -21,7 +23,7 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-myApp",
     "stop": "egg-scripts stop --title=egg-server-myApp",
-    "dev": "egg-bin dev",
+    "dev": "egg-bin dev --port 7001",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",

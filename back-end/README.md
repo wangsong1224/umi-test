@@ -33,7 +33,7 @@ $ npm stop
 
 1. router 用于配置 URL 路由规则
 2. controller 用于解析用户的输入,处理后返回相应的结果
-3. server 用于编写业务逻辑层
+3. service 用于编写业务逻辑层
 4. middleware 用于编写中间件
 5. public 用于放置静态资源
 6. extend 用于框架的扩展

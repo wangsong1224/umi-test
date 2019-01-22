@@ -1,6 +1,11 @@
 'use strict';
-
-const { app, assert } = require('egg-mock/bootstrap');
+/**
+ * 使用 Mocha 进行单元测试.
+ */
+const {
+  app,
+  assert
+} = require('egg-mock/bootstrap');
 
 describe('test/app/controller/home.test.js', () => {
 

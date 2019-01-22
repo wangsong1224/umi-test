@@ -1,11 +1,11 @@
 /**
  * 子组件的state可以上提,(state hoisting)状态提升,由父组件来管理
- * 1.子组件间接回调到父组件的serState的方法来改变父组件的state
- * 2.新的state通过props的形式把state再次被子组件获悉
+ * 1. 子组件间接回调到父组件的serState的方法来改变父组件的state
+ * 2. 新的state通过props的形式把state再次被子组件获悉
  *
  * 而dva可以把把state上提到所有React组件之上,过程是相似的:
- * 1.页面通过调用dispatch函数来驱动dva model state的改变
- * 2.改变后的dva model state 通过connect方法注入页面
+ * 1. 页面通过调用dispatch函数来驱动dva model state的改变
+ * 2. 改变后的dva model state 通过connect方法注入页面
  *
  * 所谓注入本质上是控制反转的一种实现,这种思想在许多的语言框架中都有体现,
  * 最著名的是基于java的spring,组件不在负责管理数据,组件只是通过connect
@@ -13,9 +13,9 @@
  *
  * 我们删除了组件本身的state,同时添加了@connect(mapStateToProps)
  * connect是连接dva和React两个平行世界的关键
- * 1.connect让组件获取到两样东西:model中的数据 驱动model改变的方法
- * 2.connect本质上只是一个JavaScript函数,通过@装饰器语法使用,放置在组件定义的上方
- * 3.参数:第一个最常用 习惯叫做mapStateToProps,通过这个函数,就能实现吧dva model的state注入给组件
+ * 1. connect让组件获取到两样东西:model中的数据 驱动model改变的方法
+ * 2. connect本质上只是一个JavaScript函数,通过@装饰器语法使用,放置在组件定义的上方
+ * 3. 参数:第一个最常用 习惯叫做mapStateToProps,通过这个函数,就能实现吧dva model的state注入给组件
  *
  * 传入的state包含了所有namespace下的state
  */
