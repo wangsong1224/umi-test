@@ -6,7 +6,7 @@
  * 1. controller 层负责与用户直接打交道,渲染页面 提供接口等,侧重于展示型逻辑
  * 2. service 层负责处理业务逻辑,供 controller 层调用
  * 3. data access 负责与数据源对接,进行纯粹的数据读写,供 service 层调用
- * 
+ *
  * 前端代码结构需要进行同样的分层:
  * 1. page负责与用户直接打交道:渲染页面,接受用户的操作输入,侧重于展示性交互逻辑
  * 2. model 负责处理业务逻辑,为 page 做数据 状态的读写 变换 暂存等
@@ -32,10 +32,12 @@ export default {
    * /helloworld的路径对应的是 HelloWorld.jsx
    * 在本文件中增加 routes 的配置,即可使用配置式路由
    */
-  routes: [{
+  routes: [
+    {
       path: "/",
       component: "../layout",
-      routes: [{
+      routes: [
+        {
           path: "helloworld",
           component: "./HelloWorld.jsx"
         },

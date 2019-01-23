@@ -23,6 +23,7 @@
 import React, { Component } from "react";
 import { Card, Button } from "antd";
 import { connect } from "dva";
+import axios from "axios";
 
 const mapStateToProps = state => {
   return {
@@ -69,6 +70,17 @@ const mapDispatchToProps = dispatch => {
   mapDispatchToProps
 )
 export default class PuzzleCards extends Component {
+  componentDidMount() {
+    axios
+      .get("http://localhost:7001/cards")
+      .then(res => {
+        console.log(res);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
   render() {
     return (
       <div>

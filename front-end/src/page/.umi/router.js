@@ -32,7 +32,7 @@ let routes = [
         "exact": true
       },
       {
-        "component": () => React.createElement(require('C:/Users/王松/Desktop/项目/umi-test/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/page', hasRoutesInConfig: true })
+        "component": () => React.createElement(require('/Users/oumatsu/Desktop/my-projects/umi-test/front-end/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/page', hasRoutesInConfig: true })
       }
     ]
   },
@@ -42,7 +42,7 @@ let routes = [
     "exact": true
   },
   {
-    "component": () => React.createElement(require('C:/Users/王松/Desktop/项目/umi-test/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/page', hasRoutesInConfig: true })
+    "component": () => React.createElement(require('/Users/oumatsu/Desktop/my-projects/umi-test/front-end/node_modules/umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'src/page', hasRoutesInConfig: true })
   }
 ];
 window.g_plugins.applyForEach('patchRoutes', { initialValue: routes });
