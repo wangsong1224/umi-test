@@ -47,7 +47,7 @@ export default {
         },
         {
           path: "cards",
-          component: "./Puzzlecards1.jsx"
+          component: "./CardsWithoutModel.jsx"
         },
         {
           path: "puzzlecards",
@@ -59,5 +59,20 @@ export default {
       path: "/card",
       component: "./CardTest.jsx"
     }
-  ]
+  ],
+  proxy: {
+    /**
+     * 去往本地服务器 localhost:8000的 ajax 调用中,如果是以/dev 开头的,
+     * 那么就转发到远端https://08ad1pao69.execute-api.us-east-1.amazonaws.com服务器当中
+     * /dev 也会保留在转发地址中
+     *
+     * 比如
+     * /dev/random_joke 就会被转发到
+     * https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke
+     */
+    "/dev": {
+      target: "https://08ad1pao69.execute-api.us-east-1.amazonaws.com",
+      changeOrigin: true
+    }
+  }
 };

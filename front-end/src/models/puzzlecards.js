@@ -3,10 +3,18 @@
  * vue里面的数据驱动,无论什么途径,本质上都是改变state,state的
  * 改变再映射回视图.
  */
+// request 是 demo 项目脚手架中提供的一个做 http 请求的方法，是对于 fetch 的封装，返回 Promise
+import request from "../util/request";
+const delay = millisecond => {
+  return new Promise(resolve => {
+    setTimeout(resolve, millisecond);
+  });
+};
 export default {
   namespace: "puzzlecards",
   state: {
-    data: [{
+    data: [
+      {
         id: 1,
         setup: "Did you hear about the two silk worms in a race?",
         punchline: "It ended in a tie"
@@ -17,21 +25,29 @@ export default {
         punchline: "It gets toad away"
       }
     ],
-    counter: 100
+    counter: 100,
+    cardList: []
   },
   reducers: {
-    addNewCard(state, {
-      payload: newCard
-    }) {
-      const nextCounter = state.counter + 1
-      const newCardWithId = { ...newCard,
-        id: nextCounter
-      }
-      const nextData = state.data.concat(newCardWithId)
+    addNewCard(state, { payload: newCard }) {
+      const nextCounter = state.counter + 1;
+      const newCardWithId = { ...newCard, id: nextCounter };
+      const nextData = state.data.concat(newCardWithId);
       return {
         data: nextData,
-        counter: nextCounter
-      }
+        counter: nextCounter,
+        cardList: state.cardList
+      };
+    },
+    addNewCard1(state, { payload: newCard }) {
+      const nextCounter = state.counter + 1;
+      const newCardWithId = { ...newCard, id: nextCounter };
+      const nextData = state.cardList.concat(newCardWithId);
+      return {
+        data: state.data,
+        counter: nextCounter,
+        cardList: nextData
+      };
     }
   },
   /**
@@ -55,10 +71,37 @@ export default {
     对于视图层来说,并不会感知effect和reducer的区别,视图层只是通过action描述想要做什么
     至于action是被reducer处理还是effect处理,视图层不感知,也不应该关心
     这样我们就做到了数据逻辑和视图逻辑的分离处理
-
-    
    */
   effects: {
-    'someEffect': function* () {}
+    /**
+     * 一个 generator function 在执行时有两方,一方是 generator 本身,另一方是 generator function
+     * 的句柄持有者,而这一般都是框架所持有.
+     * 我们姑且称这个句柄为 genStub.
+     * 当框架调用genStub.next()时,generator function 会执行到下一个 yield 然后暂停,并把 yield
+     * 后面表达式的计算结果返回给框架,同时把程序的执行权交给框架
+     * 框架拿到值后做处理,比如就是异步处理,处理结束拿到结果,再次调用 genStub.next()
+     * 返回值给 generator function 同时驱动它恢复执行.
+     * 当恢复执行时,你可以认为返回的处理结果会整体替换 yield<expression>
+     * 然后程序继续执行到下一个 yield.
+     *
+     * generator function 定义了流程,并在每次 yield 节点上报想做的事情
+     * 而异步的真正执行逻辑由 generator function 的句柄持有者代为执行
+     */
+    someEffect: function*() {},
+    *queryInitCards(_, sagaEffects) {
+      const { call, put } = sagaEffects;
+      /**
+       * 在 config 中配置了反向代理,所以请求的域名,协议,端口改为本地服务器的
+       */
+      const endPointURL = "http://localhost:7001/cards";
+
+      const puzzle = yield call(request, endPointURL);
+      yield put({ type: "addNewCard1", payload: puzzle });
+
+      yield call(delay, 3000);
+
+      const puzzle2 = yield call(request, endPointURL);
+      yield put({ type: "addNewCard1", payload: puzzle2 });
+    }
   }
 };

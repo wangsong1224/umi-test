@@ -61,6 +61,11 @@ const mapDispatchToProps = dispatch => {
         payload: newCard
       };
       dispatch(action);
+    },
+    onDidMount: () => {
+      dispatch({
+        type: "puzzlecards/queryInitCards"
+      });
     }
   };
 };
@@ -79,12 +84,25 @@ export default class PuzzleCards extends Component {
       .catch(e => {
         console.log(e);
       });
+    this.props.onDidMount();
   }
 
   render() {
     return (
       <div>
+        <h1>从 model 中获取的静态数据</h1>
         {this.props.state.data.map(card => {
+          return (
+            <Card key={card.id}>
+              <div>Q: {card.setup}</div>
+              <div>
+                <strong>A: {card.punchline}</strong>
+              </div>
+            </Card>
+          );
+        })}
+        <h1>通过 ajax 异步获取的数据</h1>
+        {this.props.state.cardList.map(card => {
           return (
             <Card key={card.id}>
               <div>Q: {card.setup}</div>
