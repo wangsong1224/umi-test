@@ -1,0 +1,46 @@
+/*
+umi中默认开启了 CSS modules 特性,这使得 class 要通过变量属性去引用
+
+打开控制台,查看元素, 发现 div 上有 class="HelloWorld__hello___2yYOZ" 这个样式
+我们看到他实际的 class 是 style__hello__<hash数值>,并非在源文件中声明的 hello.
+这就是 CSS modules 起了作用.
+这个 hash 是全局唯一的,比如通过文件路径来获得,这样 class 名称就做到了全局唯一.
+通过全局唯一的 CSS 命名,我们变相的获得了局部作用用的 CSS(scoped CSS).
+如果一个 CSS 文件仅仅是作用在某个局部的话,我们称这样的一个 CSS 文件为 CSS module.
+
+CSS modules 不是一个可以安装的 npm 包，也不是 w3c 中的某个标准，
+只是一项流行的社区规范（an opinionated proposal）。
+webpack browserify 等打包工具（module bundler）的能力让工具生成局部 CSS 成为可能，
+CSS modules 规范也应运而生。
+
+webpack 实现 CSS module 的原理
+1.在现代 web 开发中，服务器并不能直接使用我们写的 JS CSS HMTL 文件。
+事实上，我们按照规范写出代码，输入给编译工具 (transpiler) ，它最终把代码转换/打包，
+输出成浏览器可以使用的 JS CSS HTML。
+在多年的社区沉淀后，脱颖而出的是诸如 webpack 这样的工具，这类编译工具又称为 module bundler。
+webpack 允许我们用 import/export (ES6) 或者 require/module.exports (CommonJs) 
+这样的语法来书写我们的 JS 代码，它甚至允许我们在 js 里面 import 一个 CSS 文件。
+注意：如果脱离了 webpack 的语境，这么写当然是会引起语法错误的。
+
+2.在现代 web 开发中，我们的运行时代码强耦合了编译时工具，强耦合换来的是传统 web 开发所不可企及的新能力。
+对于 webpack，当我们每次写了 import A from B 的时候，我们其实是声明了一个A 对于 B 的依赖。
+当在 a.js 中写入 import styles from a.css 后，
+webpack 就可以把这个依赖翻译成：每当 a.js 被使用时，保证生成一个 style 标签，里面嵌入 a.css 的内容。
+同时 webpack 给予我们另一个能力：不同类型文件间可以信息传递。
+webpack 把 a.css 中的类名根据规则编译成为全局唯一的字符串，传递给 a.js 使用，
+于是手工维持的命名规则就可以自动生成。
+
+Less 介绍
+Less 是一个 CSS 超集,Less 允许我们定义变量,使用嵌套式声明,定义函数等.
+严格说 Less 包含两部分:
+1.Less 的语法
+2.Less 预处理器
+浏览器终究只认 CSS,所以 Less 文件需要经过 Less 预处理器编译成为 CSS.
+在工具的支持下,一个 Less 文件首先会经过 CSS modules 的编译,把类名全局唯一化,然后才被 Less preprocessor
+编译成为 CSS 文件.正因为如此,Less 文件可以和 CSS modules 无缝联合使用.
+*/
+.hello {
+  font-size: 32px;
+  font-weight: bold;
+  color: skyblue;
+}
