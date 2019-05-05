@@ -35,29 +35,102 @@ export default {
   routes: [
     {
       path: "/",
-      component: "../layout",
-      routes: [
-        {
-          path: "helloworld",
-          component: "./HelloWorld.jsx"
-        },
-        {
-          path: "card",
-          component: "./CardTest.jsx"
-        },
-        {
-          path: "cards",
-          component: "./CardsWithoutModel.jsx"
-        },
-        {
-          path: "puzzlecards",
-          component: "./puzzlecards.jsx"
-        }
-      ]
+      component: "./pro/Login.jsx"
     },
     {
       path: "/card",
-      component: "./CardTest.jsx"
+      component: "./demo/CardTest.jsx"
+    },
+    {
+      path: "/home",
+      component: "../layout",
+      routes: [
+        // demo部分路由
+        {
+          path: "helloworld",
+          component: "./demo/HelloWorld.jsx"
+        },
+        {
+          path: "card",
+          component: "./demo/CardTest.jsx"
+        },
+        {
+          path: "cards",
+          component: "./demo/CardsWithoutModel.jsx"
+        },
+        {
+          path: "puzzlecards",
+          component: "./demo/puzzlecards.jsx"
+        },
+
+        /**pro 部分路由 */
+        // 仪表盘
+        {
+          path: "analyze",
+          component: "./pro/dashboard/Analyze.jsx"
+        },
+        {
+          path: "monitor",
+          component: "./pro/dashboard/Monitor.jsx"
+        },
+        {
+          path: "workspace",
+          component: "./pro/dashboard/Workspace.jsx"
+        },
+        // 表单页
+        {
+          path: "basicForm",
+          component: "./pro/form/BasicForm.jsx"
+        },
+        {
+          path: "stepedForm",
+          component: "./pro/form/StepedForm.jsx"
+        },
+        {
+          path: "proForm",
+          component: "./pro/form/ProForm.jsx"
+        },
+        // 列表页
+        {
+          path: "searchTable",
+          component: "./pro/list/SearchTable.jsx"
+        },
+        {
+          path: "standradList",
+          component: "./pro/list/StandradList.jsx"
+        },
+        {
+          path: "cardList",
+          component: "./pro/list/CardList.jsx"
+        },
+        {
+          path: "searchList",
+          component: "./pro/list/SearchList.jsx"
+        },
+        // 详情页
+        {
+          path: "basicDetails",
+          component: "./pro/details/BasicDetails.jsx"
+        },
+        // 结果页
+        {
+          path: "success",
+          component: "./pro/result/Success.jsx"
+        },
+        {
+          path: "failure",
+          component: "./pro/result/Failure.jsx"
+        },
+        // 个人页
+        {
+          path: "personalSetting",
+          component: "./pro/person/PersonalSetting.jsx"
+        },
+        {
+          path: "personalCenter",
+          component: "./pro/person/PersonalCenter.jsx"
+        }
+      ]
     }
   ],
   proxy: {

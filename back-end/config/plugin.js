@@ -43,3 +43,9 @@ exports.cors = {
   enable: true,
   package: "egg-cors"
 };
+
+// 参数校验
+exports.validate = {
+  enable: true,
+  package: "egg-validate"
+};

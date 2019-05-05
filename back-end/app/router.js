@@ -40,5 +40,6 @@ module.exports = app => {
   });
   // home 是文件名,index 是具体的方法
   // 路由名称 URL路径 中间件(可以有多个 用,相连) Controller(可写为'home.index'这种简写形式)
-  router.get("home", "/cards", gzip, controller.cards.getCards);
+  router.get("cards", "/cards", gzip, controller.cards.getCards);
+  router.post("/login", controller.user.login);
 };
