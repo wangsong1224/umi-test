@@ -13,9 +13,11 @@ class Login extends Component {
       if (!err) {
         LoginApi.login(values)
           .then(res => {
+            console.log("success");
             console.log(res);
           })
           .catch(e => {
+            console.log("error");
             console.error(e);
           });
       }
